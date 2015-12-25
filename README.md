@@ -1,3 +1,5 @@
+# Twitter App
+
 Follow these instructions to get the project up and running:
 
 1) Make sure you have node installed. If you don't you can download it from here:
