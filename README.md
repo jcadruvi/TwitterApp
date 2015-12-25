@@ -34,3 +34,6 @@ Consumer Secret (API Secret)
 You will need to take the values of those fields and add them into the config file so the application can
 call the Twitter API to reveal your tweets.
 
+This application will only need read access to your twitter account. It is recommended that you go to the
+Permissions tab and select the Read Only radio button so the application does not have more permissions than
+it needs to have. It will not write anything to your twitter account.
