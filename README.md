@@ -38,3 +38,8 @@ call the Twitter API to reveal your tweets.
 This application will only need read access to your twitter account. It is recommended that you go to the
 Permissions tab and select the Read Only radio button so the application does not have more permissions than
 it needs to have. It will not write anything to your twitter account.
+
+
+Links I still need to look at:
+    https://dev.twitter.com/oauth/overview/introduction
+    https://dev.twitter.com/overview/api/twitter-libraries
