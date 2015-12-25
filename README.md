@@ -26,10 +26,11 @@ can use to get the tweets for your account. In order to do this you need to go t
 https://apps.twitter.com/
 
 Then click the create app and fill out the fields. Once you have completed this you will be redirected to a page
-for the application. If you click on the Keys and Access Tokens page you will see the fields:
+for the application. If you click on the Keys and Access Tokens you will see the button Get Access Token. Click
+this button. You should now see the following fields:
 
-Consumer Key (API Key)
-Consumer Secret (API Secret)
+Access Token
+Access Token Secret
 
 You will need to take the values of those fields and add them into the config file so the application can
 call the Twitter API to reveal your tweets.
