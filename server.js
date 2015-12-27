@@ -11,7 +11,7 @@ var express = require('express'),
 // Set the node environment variable if not set before
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
-//var config = require('./config/config');
+var config = require('./config');
 
 var port = 8080;
 
@@ -25,7 +25,7 @@ fs.readdirSync('./app/controllers').forEach(function (file) {
     var route;
     if(file.substr(-3) === '.js') {
         route = require('./app/controllers/' + file);
-        route.controller(app);
+        route.controller(app, config);
     }
 });
 
