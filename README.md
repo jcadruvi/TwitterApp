@@ -29,6 +29,8 @@ Then click the create app and fill out the fields. Once you have completed this 
 for the application. If you click on the Keys and Access Tokens you will see the button Get Access Token. Click
 this button. You should now see the following fields:
 
+Consumer Key
+Consumer Secret
 Access Token
 Access Token Secret
 
@@ -43,3 +45,4 @@ it needs to have. It will not write anything to your twitter account.
 Links I still need to look at:
     https://dev.twitter.com/oauth/overview/introduction
     https://dev.twitter.com/overview/api/twitter-libraries
+    https://dev.twitter.com/oauth/overview/authorizing-requests
