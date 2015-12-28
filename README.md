@@ -46,3 +46,4 @@ Links I still need to look at:
     https://dev.twitter.com/oauth/overview/introduction
     https://dev.twitter.com/overview/api/twitter-libraries
     https://dev.twitter.com/oauth/overview/authorizing-requests
+    https://github.com/BoyCook/TwitterJSClient
