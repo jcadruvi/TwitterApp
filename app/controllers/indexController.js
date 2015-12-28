@@ -8,8 +8,7 @@ module.exports.controller = function (app, config) {
             consumerKey: config.twitter.consumerKey,
             consumerSecret: config.twitter.consumerSecret,
             accessToken: config.twitter.accessToken,
-            accessTokenSecret: config.twitter.accessTokenSecret,
-            callBackUrl: config.twitter.callBackUrl
+            accessTokenSecret: config.twitter.accessTokenSecret
         }
 
         return new Twitter(twitterConfig);
