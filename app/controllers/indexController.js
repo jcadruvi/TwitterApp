@@ -14,25 +14,24 @@ module.exports.controller = function (app, config) {
         return new Twitter(twitterConfig);
     };
 
-    var error = function (err, response, body) {
-        console.log('ERROR [%s]', err);
-    };
-    var success = function (data) {
-        console.log('Data [%s]', data);
-    };
-
     app.get('/', function(req, res) {
         res.render('index', { title: 'Twitter App' });
     });
 
-    app.get('/api/twitter', function(req, res) {
-        var twitter = getTwitterClient(),
-            data = twitter.getUserTimeline({ screen_name: 'joshcadruvi', count: '10'}, error, success);
-        res.json({
-            "data": data,
-            "status": {
-                "code": 200
-            }
-        });
+    app.get('/api/twitter/timeline', function(req, res) {
+        var twitter = getTwitterClient();
+        twitter.getUserTimeline(
+            {screen_name: 'joshcadruvi', count: '10'},
+            function (err, response, body) {
+                console.log('Error in api/twitter [%s]', err);
+            },
+            function (data) {
+                res.json({
+                    "data": data,
+                    "status": {
+                        "code": 200
+                    }
+                });
+            });
     });
 };
