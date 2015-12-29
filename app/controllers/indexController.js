@@ -27,7 +27,7 @@ module.exports.controller = function (app, config) {
             },
             function (data) {
                 res.json({
-                    "data": data,
+                    "data": JSON.parse(data),
                     "status": {
                         "code": 200
                     }
