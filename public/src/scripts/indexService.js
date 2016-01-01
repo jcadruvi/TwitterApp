@@ -1,5 +1,5 @@
 (function () {
-    "use script";
+    "use strict";
     angular.module("app")
            .factory("indexService", ["$http", indexService]);
 
@@ -9,7 +9,7 @@
         self.loading = true;
         self.tweets = [];
 
-        self.getTweets = function() {
+        var getTweets = function() {
             self.loading = true;
             $http.get('/api/twitter/timeline').then(function (result) {
                 if (result.status && result.status.code === 200) {
@@ -17,6 +17,10 @@
                 }
                 self.loading = false;
             });
+        };
+
+        self.init = function () {
+            getTweets();
         };
 
         return self;
