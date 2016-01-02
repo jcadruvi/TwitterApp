@@ -44,6 +44,7 @@ it needs to have. It will not write anything to your twitter account.
 
 TODO:
     Need to test the twitter date filter.
+    Need to test the twitter text filter.
 
 
 Links I still need to look at:
