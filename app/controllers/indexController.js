@@ -21,7 +21,7 @@ module.exports.controller = function (app, config) {
     app.get('/api/twitter/timeline', function(req, res) {
         var twitter = getTwitterClient();
         twitter.getUserTimeline(
-            {screen_name: 'joshcadruvi', count: '10'},
+            {screen_name: 'joshcadruvi', count: '200', trim_user: true},
             function (err, response, body) {
                 console.log('Error in api/twitter [%s]', err);
             },
