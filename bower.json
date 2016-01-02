@@ -19,6 +19,7 @@
     "angular-ui-router": "~0.2.15",
     "angular-mocks": "~1.4.7",
     "normalize.css": "~3.0.3",
-    "bootstrap": "~3.3.6"
+    "bootstrap": "~3.3.6",
+    "angular-sanitize": "~1.4.8"
   }
 }
