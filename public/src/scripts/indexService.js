@@ -12,8 +12,8 @@
         var getTweets = function() {
             self.loading = true;
             $http.get('/api/twitter/timeline').then(function (result) {
-                if (result.status && result.status.code === 200) {
-                    self.tweets = result.data;
+                if (result.status === 200) {
+                    self.tweets = result.data.data;
                 }
                 self.loading = false;
             });

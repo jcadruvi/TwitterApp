@@ -42,6 +42,10 @@ Permissions tab and select the Read Only radio button so the application does no
 it needs to have. It will not write anything to your twitter account.
 
 
+TODO:
+    Need to test the twitter date filter.
+
+
 Links I still need to look at:
     https://dev.twitter.com/oauth/overview/introduction
     https://dev.twitter.com/overview/api/twitter-libraries

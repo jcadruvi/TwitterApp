@@ -11,13 +11,20 @@ html(ng-app="app")
         table
             thead
                 tr
+                    td Date
                     td Text
+                    td Retweets
+                    td Favorites
             tbody
                 tr(ng-repeat="tweet in vm.service.tweets")
+                    td(ng-bind="tweet.created_at | twitterDate")
                     td(ng-bind="tweet.text")
+                    td(ng-bind="tweet.retweet_count")
+                    td(ng-bind="tweet.favorite_count")
         script(src="bower/jquery/dist/jquery.js")
         script(src="bower/angular/angular.js")
         script(src="bower/angular-ui-router/release/angular-ui-router.js")
         script(src="scripts/app.js")
         script(src="scripts/indexService.js")
         script(src="scripts/indexController.js")
+        script(src="scripts/twitterDateFilter.js")
