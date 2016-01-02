@@ -4,7 +4,18 @@
     angular.module("app")
            .filter("twitterText", function() {
                return function(input) {
-                    return "Test";
+                    var anchor,
+                        text = input.text;
+                    if (input.entities && input.entities.urls) {
+                        for (var i = 0; i < input.entities.urls.length; i++) {
+                            if (input.entities.urls[i].url && input.entities.urls[i].display_url) {
+                                anchor = "<a href=" + input.entities.urls[i].url + " target='_blank'>" +
+                                         input.entities.urls[i].display_url + "</a>";
+                                text = text.replace(input.entities.urls[i].url, anchor);
+                            }
+                        }
+                    }
+                    return text;
                };
            });
 })();
