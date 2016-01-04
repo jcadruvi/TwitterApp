@@ -38,10 +38,41 @@ describe("twitterText", function() {
                     ]
                 }]
             }
-        }
+        },
         filterResult = $filter('twitterText')(twitterData);
         expect(filterResult).toBe("Creating an Angular 2 build with Gulp, TSLint and DefinitelyTyped "
             + createAnchorTag(twitterData.entities.urls[0].url, twitterData.entities.urls[0].display_url)
             + ".");
+    });
+    it("should handle duplicate same URL's in a tweet", function() {
+        var twitterData = {
+            "text": "Machine Learning for indentify the author of an email https://t.co/v6TAqtM90E https://t.co/v6TAqtM90E",
+            "entities": {
+                "hashtags": [],
+                "symbols": [],
+                "user_mentions": [],
+                "urls": [{
+                    "url": "https://t.co/v6TAqtM90E",
+                    "expanded_url": "http://flip.it/Vw10S",
+                    "display_url": "flip.it/Vw10S",
+                    "indices": [
+                        54,
+                        77
+                ]},
+                {
+                    "url": "https://t.co/v6TAqtM90E",
+                    "expanded_url": "http://flip.it/Vw10S",
+                    "display_url": "flip.it/Vw10S",
+                    "indices": [
+                        78,
+                        101
+                    ]
+                }]
+            }
+        },
+        anchorTag = createAnchorTag(twitterData.entities.urls[0].url, twitterData.entities.urls[0].display_url),
+        filterResult = $filter('twitterText')(twitterData);
+        expect(filterResult).toBe("Machine Learning for indentify the author of an email "
+            + anchorTag + " " + anchorTag);
     });
 });
