@@ -73,6 +73,6 @@ describe("twitterText", function() {
         anchorTag = createAnchorTag(twitterData.entities.urls[0].url, twitterData.entities.urls[0].display_url),
         filterResult = $filter('twitterText')(twitterData);
         expect(filterResult).toBe("Machine Learning for indentify the author of an email "
-            + anchorTag + " " + anchorTag);
+            + anchorTag + " ");
     });
 });
