@@ -6,7 +6,7 @@ describe("twitterText", function() {
     };
 
     var createImageTag = function (url) {
-        return '<img src="' + url + '"/>'
+        return '<div><img src="' + url + '"/></div>'
     };
 
     beforeEach(module("app"));
