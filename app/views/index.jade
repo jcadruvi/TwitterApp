@@ -6,15 +6,15 @@ html(ng-app="app")
         link(rel="stylesheet" type="text/css" href="content/css/site.css")
 
     body(ng-controller="indexController as vm")
-        div
-            div(ng-repeat="tweet in vm.service.tweets")
+        div.twitter-container
+            div.twitter-row(ng-repeat="tweet in vm.service.tweets")
                 div
                     span Date:
-                    span(ng-bind="tweet.created_at | twitterDate")
-                    span Retweeted:
-                    span(ng-bind="tweet.retweet_count")
-                    span Favorites:
-                    span(ng-bind="tweet.favorite_count")
+                    span.twitter-detail(ng-bind="tweet.created_at | twitterDate")
+                    span.twitter-detail Retweeted:
+                    span.twitter-detail(ng-bind="tweet.retweet_count")
+                    span.twitter-detail Favorites:
+                    span.twitter-detail(ng-bind="tweet.favorite_count")
                 div(ng-bind-html="tweet | twitterText")
         script(src="bower/jquery/dist/jquery.js")
         script(src="bower/angular/angular.js")
