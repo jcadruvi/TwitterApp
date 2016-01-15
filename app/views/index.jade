@@ -6,19 +6,16 @@ html(ng-app="app")
         link(rel="stylesheet" type="text/css" href="content/css/site.css")
 
     body(ng-controller="indexController as vm")
-        table.twitter-grid
-            thead
-                tr
-                    td.twitter-grid-detail Date
-                    td.twitter-grid-detail Text
-                    td.twitter-grid-detail Retweets
-                    td.twitter-grid-detail Favorites
-            tbody
-                tr(ng-repeat="tweet in vm.service.tweets")
-                    td.twitter-grid-detail(ng-bind="tweet.created_at | twitterDate")
-                    td.twitter-grid-detail(ng-bind-html="tweet | twitterText")
-                    td.twitter-grid-detail(ng-bind="tweet.retweet_count")
-                    td.twitter-grid-detail(ng-bind="tweet.favorite_count")
+        div
+            div(ng-repeat="tweet in vm.service.tweets")
+                div
+                    span Date:
+                    span(ng-bind="tweet.created_at | twitterDate")
+                    span Retweeted:
+                    span(ng-bind="tweet.retweet_count")
+                    span Favorites:
+                    span(ng-bind="tweet.favorite_count")
+                div(ng-bind-html="tweet | twitterText")
         script(src="bower/jquery/dist/jquery.js")
         script(src="bower/angular/angular.js")
         script(src="bower/angular-ui-router/release/angular-ui-router.js")
