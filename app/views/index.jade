@@ -9,11 +9,11 @@ html(ng-app="app")
         div.container-fluid
             div.row
                 div.col-xs-12.col-md-12.col-lg-12
-                    table.twitter-grid.table.table-bordered.table-hover
+                    table.twitter-grid.table-bordered.table-hover
                         tbody
-                            tr(ng-repeat="tweet in vm.service.tweets")
+                            tr(ng-repeat="tweet in vm.service.tweets", ng-class="{success: tweet.selected}")
                                 td.twitter-grid-detail
-                                    input(type="checkbox")
+                                    input(type="checkbox", ng-click="tweet.selected = !tweet.selected")
                                 td.twitter-grid-detail
                                     div
                                         span Date:
