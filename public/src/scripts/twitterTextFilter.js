@@ -64,7 +64,9 @@
                         if (input.entities.media) {
                             for (i = 0; i < input.entities.media.length; i++) {
                                 if (input.entities.media[i].url && input.entities.media[i].media_url) {
-                                    image = '<div><img src="' + input.entities.media[i].media_url + '"/></div>';
+                                    image = '<div><img src="' + input.entities.media[i].media_url + '" width="' +
+                                            input.entities.media[i].sizes.small.w + '" height="' +
+                                            input.entities.media[i].sizes.small.h + '"/></div>';
                                     text = text.replace(new RegExp(input.entities.media[i].url, 'g'), image);
                                 }
                             }

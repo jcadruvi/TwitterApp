@@ -5,8 +5,8 @@ describe("twitterText", function() {
         return '<a target="_blank" href="' + url + '">' + displayUrl + '</a>';
     };
 
-    var createImageTag = function (url) {
-        return '<div><img src="' + url + '"/></div>'
+    var createImageTag = function (url, width, height) {
+        return '<div><img src="' + url + '" width="' + width + '" height="' + height + '"/></div>';
     };
 
     beforeEach(module("app"));
@@ -141,7 +141,8 @@ describe("twitterText", function() {
                     }]
             }
         },
-        imageTag = createImageTag(twitterData.entities.media[0].media_url),
+        imageTag = createImageTag(twitterData.entities.media[0].media_url, twitterData.entities.media[0].sizes.small.w,
+                                  twitterData.entities.media[0].sizes.small.h),
         filterResult = $filter('twitterText')(twitterData);
         expect(filterResult).toBe("Machine Learning for indentify the author of an email "
             + imageTag);
