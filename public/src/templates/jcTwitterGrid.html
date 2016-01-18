@@ -1,7 +1,7 @@
 <div>
     <table class="twitter-grid table-bordered table-hover">
         <tbody>
-            <tr ng-repeat="tweet in vm.tweets" ng-class="{success: tweet.selected}">
+            <tr ng-repeat="tweet in vm.tweets | limitTo:vm.pageSize:vm.pageBegin" ng-class="{success: tweet.selected}">
                 <td class="twitter-grid-detail">
                     <input type="checkbox" ng-click="tweet.selected = !tweet.selected" />
                 </td>

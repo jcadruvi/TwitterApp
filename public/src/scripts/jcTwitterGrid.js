@@ -9,6 +9,7 @@
             controllerAs: 'vm',
             bindToController: {
                 currentPage: '=',
+                pageSize: '=',
                 total: '=',
                 tweets: '='
             },
