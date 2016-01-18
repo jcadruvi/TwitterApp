@@ -1,0 +1,23 @@
+<div>
+    <table class="twitter-grid table-bordered table-hover">
+        <tbody>
+            <tr ng-repeat="tweet in vm.tweets" ng-class="{success: tweet.selected}">
+                <td class="twitter-grid-detail">
+                    <input type="checkbox" ng-click="tweet.selected = !tweet.selected" />
+                </td>
+                <td class="twitter-grid-detail">
+                    <div>
+                        <span>Date: </span>
+                        <span ng-bind="tweet.created_at | twitterDate" class="twitter-detail"></span>
+                        <span class="twitter-detail">Retweeted:</span>
+                        <span class="twitter-detail" ng-bind="tweet.retweet_count"></span>
+                        <span class="twitter-detail">Favorites:</span>
+                        <span class="twitter-detail" ng-bind="tweet.favorite_count"></span>
+                    </div>
+                    <div ng-bind-html="tweet | twitterText"></div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <jc-pagination></jc-pagination>
+</div>

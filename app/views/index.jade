@@ -9,21 +9,7 @@ html(ng-app="app")
         div.container-fluid
             div.row
                 div.col-xs-12.col-md-12.col-lg-12
-                    table.twitter-grid.table-bordered.table-hover
-                        tbody
-                            tr(ng-repeat="tweet in vm.service.tweets", ng-class="{success: tweet.selected}")
-                                td.twitter-grid-detail
-                                    input(type="checkbox", ng-click="tweet.selected = !tweet.selected")
-                                td.twitter-grid-detail
-                                    div
-                                        span Date:
-                                        span.twitter-detail(ng-bind="tweet.created_at | twitterDate")
-                                        span.twitter-detail Retweeted:
-                                        span.twitter-detail(ng-bind="tweet.retweet_count")
-                                        span.twitter-detail Favorites:
-                                        span.twitter-detail(ng-bind="tweet.favorite_count")
-                                    div(ng-bind-html="tweet | twitterText")
-                    jc-pagination
+                    jc-twitter-grid(tweets="vm.service.tweets")
         script(src="bower/jquery/dist/jquery.js")
         script(src="bower/angular/angular.js")
         script(src="bower/angular-ui-router/release/angular-ui-router.js")
@@ -36,3 +22,5 @@ html(ng-app="app")
         script(src="scripts/twitterTextFilter.js")
         script(src="scripts/jcPagination.js")
         script(src="scripts/jcPaginationController.js")
+        script(src="scripts/jcTwitterGrid.js")
+        script(src="scripts/jcTwitterGridController.js")
