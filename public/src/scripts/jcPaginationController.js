@@ -31,6 +31,12 @@
             if (vm.currentPage < vm.numberOfPages) {
                 vm.currentPage++;
             }
-        }
+        };
+
+        vm.doPrevious = function () {
+            if (vm.currentPage > 1) {
+                vm.currentPage--;
+            }
+        };
     }
 })();
