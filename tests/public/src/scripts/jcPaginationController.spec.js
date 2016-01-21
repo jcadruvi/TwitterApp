@@ -81,4 +81,34 @@ describe("jcPaginationController", function () {
         expect(vm.allowNext).toBe(true);
     });
 
+    it('should not increment currentPage if numberOfPages has not be set yet if doNext is called', function () {
+        var vm, $scope = $rootScope.$new();
+        vm = $controller('jcPaginationController', { $scope: $scope});
+
+        expect(vm.currentPage).toBe(1);
+        vm.doNext();
+        expect(vm.currentPage).toBe(1);
+    });
+
+    it('should increment currentPage when doNext is called', function () {
+        var vm, $scope = $rootScope.$new();
+        vm = $controller('jcPaginationController', { $scope: $scope});
+
+        expect(vm.currentPage).toBe(1);
+        vm.numberOfPages = 6;
+        vm.doNext();
+        expect(vm.currentPage).toBe(2);
+    });
+
+    it('should not increment currentPage if numberOfPages is equal to currentPage when doNext is called', function () {
+        var vm, $scope = $rootScope.$new();
+        vm = $controller('jcPaginationController', { $scope: $scope});
+
+        expect(vm.currentPage).toBe(1);
+        vm.numberOfPages = 6;
+        vm.currentPage = 6;
+        vm.doNext();
+        expect(vm.currentPage).toBe(6);
+    });
+
 });

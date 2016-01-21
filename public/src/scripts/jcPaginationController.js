@@ -26,5 +26,11 @@
         $scope.$watch('currentPage', function () {
            calculateAllowPreviousAndNext();
         });
+
+        vm.doNext = function () {
+            if (vm.currentPage < vm.numberOfPages) {
+                vm.currentPage++;
+            }
+        }
     }
 })();
