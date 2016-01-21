@@ -33,7 +33,7 @@ describe("jcPaginationController", function () {
         expect(vm.numberOfPages).toBe(6);
     });
 
-    it('should calculate allowPrevious correctly.', function () {
+    it('should calculate allowPrevious false correctly.', function () {
         var vm, $scope = $rootScope.$new();
         vm = $controller('jcPaginationController', { $scope: $scope});
 
@@ -43,6 +43,15 @@ describe("jcPaginationController", function () {
         vm.currentPage = 1;
         $scope.$apply();
         expect(vm.allowPrevious).toBe(false);
+    });
+
+    it('should calculate allowPrevious true correctly.', function () {
+        var vm, $scope = $rootScope.$new();
+        vm = $controller('jcPaginationController', { $scope: $scope});
+
+        expect(vm.allowPrevious).toBe(false);
+        vm.total = 51;
+        vm.pageSize = 10;
         vm.currentPage = 2;
         $scope.$apply();
         expect(vm.allowPrevious).toBe(true);
