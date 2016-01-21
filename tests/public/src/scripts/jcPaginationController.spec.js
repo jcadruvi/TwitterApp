@@ -57,4 +57,28 @@ describe("jcPaginationController", function () {
         expect(vm.allowPrevious).toBe(true);
     });
 
+    it('should calculate allowNext false correctly.', function () {
+        var vm, $scope = $rootScope.$new();
+        vm = $controller('jcPaginationController', { $scope: $scope});
+
+        expect(vm.allowNext).toBe(false);
+        vm.total = 51;
+        vm.pageSize = 10;
+        vm.currentPage = 1;
+        $scope.$apply();
+        expect(vm.allowNext).toBe(false);
+    });
+
+    it('should calculate allowNext true correctly.', function () {
+        var vm, $scope = $rootScope.$new();
+        vm = $controller('jcPaginationController', { $scope: $scope});
+
+        expect(vm.allowNext).toBe(false);
+        vm.total = 51;
+        vm.pageSize = 10;
+        vm.currentPage = 6;
+        $scope.$apply();
+        expect(vm.allowNext).toBe(true);
+    });
+
 });
