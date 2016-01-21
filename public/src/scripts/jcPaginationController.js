@@ -4,7 +4,11 @@
 
     function jcPaginationController($scope) {
         var vm = this; // jshint ignore:line
-        $scope.$watch('items', function(){
+        vm.numberOfPages = 0;
+        $scope.$watch(['pageSize', 'total'], function(){
+            if (vm.total && vm.pageSize) {
+                vm.numberOfPages = Math.ceil(vm.total / vm.pageSize);
+            }
         });
     }
 })();
