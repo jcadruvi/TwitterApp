@@ -61,8 +61,6 @@ describe("jcPaginationController", function () {
         });
     });
 
-
-
     describe('allowNext variable', function() {
         it('should calculate allowNext false correctly.', function () {
             var vm, $scope = $rootScope.$new();
@@ -89,7 +87,61 @@ describe("jcPaginationController", function () {
         });
     });
 
+    describe('startPage variable', function() {
+        it('should not increment when currentPages is 2 and numberOfPages is 5.', function() {
+           var vm, $scope = $rootScope.$new();
+           vm = $controller('jcPaginationController', { $scope: $scope});
+           vm.currentPage = 2;
+           vm.numberOfPages = 5;
+           $scope.$apply();
+           expect(vm.startPage).toBe(1);
+        });
 
+        it('should not increment when currentPages is 3 and numberOfPages is 5.', function() {
+           var vm, $scope = $rootScope.$new();
+           vm = $controller('jcPaginationController', { $scope: $scope});
+           vm.currentPage = 3;
+           vm.numberOfPages = 5;
+           $scope.$apply();
+           expect(vm.startPage).toBe(1);
+        });
+
+        it('should be 2 when currentPages is 4 and numberOfPages is 10.', function() {
+           var vm, $scope = $rootScope.$new();
+           vm = $controller('jcPaginationController', { $scope: $scope});
+           vm.currentPage = 4;
+           vm.numberOfPages = 10;
+           $scope.$apply();
+           expect(vm.startPage).toBe(2);
+        });
+
+        it('should be 3 when currentPages is 5 and numberOfPages is 10.', function() {
+           var vm, $scope = $rootScope.$new();
+           vm = $controller('jcPaginationController', { $scope: $scope});
+           vm.currentPage = 5;
+           vm.numberOfPages = 10;
+           $scope.$apply();
+           expect(vm.startPage).toBe(3);
+        });
+
+        it('should not increment when currentPages is 4 and numberOfPages is 5.', function() {
+           var vm, $scope = $rootScope.$new();
+           vm = $controller('jcPaginationController', { $scope: $scope});
+           vm.currentPage = 4;
+           vm.numberOfPages = 5;
+           $scope.$apply();
+           expect(vm.startPage).toBe(1);
+        });
+
+        it('should not increment when currentPages is 5 and numberOfPages is 5.', function() {
+           var vm, $scope = $rootScope.$new();
+           vm = $controller('jcPaginationController', { $scope: $scope});
+           vm.currentPage = 5;
+           vm.numberOfPages = 5;
+           $scope.$apply();
+           expect(vm.startPage).toBe(1);
+        });
+    });
 
     describe('doNext method', function() {
         it('should not increment currentPage if numberOfPages has not be set yet if doNext is called', function () {
