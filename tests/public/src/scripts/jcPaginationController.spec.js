@@ -57,32 +57,35 @@ describe("jcPaginationController", function () {
         expect(vm.allowPrevious).toBe(true);
     });
 
-    it('should calculate allowNext false correctly.', function () {
-        var vm, $scope = $rootScope.$new();
-        vm = $controller('jcPaginationController', { $scope: $scope});
+    describe('allowNext variable', function() {
+        it('should calculate allowNext false correctly.', function () {
+            var vm, $scope = $rootScope.$new();
+            vm = $controller('jcPaginationController', { $scope: $scope});
 
-        expect(vm.allowNext).toBe(false);
-        vm.total = 51;
-        vm.pageSize = 10;
-        vm.currentPage = 1;
-        $scope.$apply();
-        expect(vm.allowNext).toBe(false);
+            expect(vm.allowNext).toBe(false);
+            vm.total = 51;
+            vm.pageSize = 10;
+            vm.currentPage = 1;
+            $scope.$apply();
+            expect(vm.allowNext).toBe(false);
+        });
+
+        it('should calculate allowNext true correctly.', function () {
+            var vm, $scope = $rootScope.$new();
+            vm = $controller('jcPaginationController', { $scope: $scope});
+
+            expect(vm.allowNext).toBe(false);
+            vm.total = 51;
+            vm.pageSize = 10;
+            vm.currentPage = 6;
+            $scope.$apply();
+            expect(vm.allowNext).toBe(true);
+        });
     });
 
-    it('should calculate allowNext true correctly.', function () {
-        var vm, $scope = $rootScope.$new();
-        vm = $controller('jcPaginationController', { $scope: $scope});
 
-        expect(vm.allowNext).toBe(false);
-        vm.total = 51;
-        vm.pageSize = 10;
-        vm.currentPage = 6;
-        $scope.$apply();
-        expect(vm.allowNext).toBe(true);
-    });
 
     describe('doNext method', function() {
-
         it('should not increment currentPage if numberOfPages has not be set yet if doNext is called', function () {
             var vm, $scope = $rootScope.$new();
             vm = $controller('jcPaginationController', { $scope: $scope});
@@ -112,7 +115,6 @@ describe("jcPaginationController", function () {
             vm.doNext();
             expect(vm.currentPage).toBe(6);
         });
-
     });
 
     describe('doPrevious method', function() {
@@ -147,9 +149,4 @@ describe("jcPaginationController", function () {
             expect(vm.currentPage).toBe(1);
         });
     });
-
-
-
-
-
 });
