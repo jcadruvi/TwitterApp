@@ -1,6 +1,6 @@
 <nav>
   <ul class="pagination">
-    <li>
+    <li ng-class="{ disabled: !vm.allowPrevious }">
       <a href="#" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
       </a>
@@ -10,7 +10,7 @@
     <li><a href="#" ng-bind="vm.currentPage + 2"></a></li>
     <li><a href="#" ng-bind="vm.currentPage + 3"></a></li>
     <li><a href="#" ng-bind="vm.currentPage + 4"></a></li>
-    <li>
+    <li ng-class="{ disabled: !vm.allowNext }">
       <a href="#" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
       </a>
