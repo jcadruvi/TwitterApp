@@ -8,9 +8,9 @@
             controller: 'jcPaginationController',
             controllerAs: 'vm',
             bindToController: {
-                currentPage: '=',
-                pageSize: '=',
-                total: '='
+                currentPage: '=?',
+                pageSize: '=?',
+                total: '=?'
             },
             replace: true,
             restrict: 'E',

@@ -9,7 +9,7 @@ html(ng-app="app")
         div.container-fluid
             div.row
                 div.col-xs-12.col-md-12.col-lg-12
-                    jc-twitter-grid(tweets="vm.service.tweets" current-page="1" page-size="50" total="200")
+                    jc-twitter-grid(tweets="vm.service.tweets" page-size="vm.service.pageSize")
         script(src="bower/jquery/dist/jquery.js")
         script(src="bower/angular/angular.js")
         script(src="bower/angular-ui-router/release/angular-ui-router.js")

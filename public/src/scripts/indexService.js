@@ -7,6 +7,7 @@
         var self = {};
 
         self.loading = true;
+        self.pageSize = 10;
         self.tweets = [];
 
         var getTweets = function() {

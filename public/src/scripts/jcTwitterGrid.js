@@ -8,9 +8,7 @@
             controller: 'jcTwitterGridController',
             controllerAs: 'vm',
             bindToController: {
-                currentPage: '=',
                 pageSize: '=',
-                total: '=',
                 tweets: '='
             },
             replace: true,
