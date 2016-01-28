@@ -45,6 +45,7 @@
             if (vm.currentPage < vm.numberOfPages) {
                 vm.currentPage++;
             }
+            calculateAllowPreviousAndNext();
             calculateStartPage();
         };
 
@@ -52,6 +53,7 @@
             if (vm.currentPage > 1) {
                 vm.currentPage--;
             }
+            calculateAllowPreviousAndNext();
             calculateStartPage();
         };
     }

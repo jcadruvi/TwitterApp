@@ -1,16 +1,16 @@
 <nav>
   <ul class="pagination">
-    <li ng-class="{ disabled: !vm.allowPrevious }">
+    <li ng-class="{ disabled: !vm.allowPrevious }" ng-click="vm.doPrevious()">
       <a href="#" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
       </a>
     </li>
     <li ng-class="{ active: (vm.startPage === vm.currentPage) }"><a href="#" ng-bind="vm.startPage"></a></li>
-    <li ng-class="{ active: (vm.startPage === (vm.currentPage + 1)) }"><a href="#" ng-bind="vm.startPage + 1"></a></li>
-    <li ng-class="{ active: (vm.startPage === (vm.currentPage + 2)) }"><a href="#" ng-bind="vm.startPage + 2"></a></li>
-    <li ng-class="{ active: (vm.startPage === (vm.currentPage + 3)) }"><a href="#" ng-bind="vm.startPage + 3"></a></li>
-    <li ng-class="{ active: (vm.startPage === (vm.currentPage + 4)) }"><a href="#" ng-bind="vm.startPage + 4"></a></li>
-    <li ng-class="{ disabled: !vm.allowNext }">
+    <li ng-class="{ active: ((vm.startPage + 1) === vm.currentPage) }"><a href="#" ng-bind="vm.startPage + 1"></a></li>
+    <li ng-class="{ active: ((vm.startPage + 2) === vm.currentPage) }"><a href="#" ng-bind="vm.startPage + 2"></a></li>
+    <li ng-class="{ active: ((vm.startPage + 3) === vm.currentPage) }"><a href="#" ng-bind="vm.startPage + 3"></a></li>
+    <li ng-class="{ active: ((vm.startPage + 4) === vm.currentPage) }"><a href="#" ng-bind="vm.startPage + 4"></a></li>
+    <li ng-class="{ disabled: !vm.allowNext }" ng-click="vm.doNext()">
       <a href="#" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
       </a>
