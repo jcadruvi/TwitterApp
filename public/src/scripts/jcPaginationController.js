@@ -13,7 +13,7 @@
         var calculateAllowPreviousAndNext = function () {
             if (vm.currentPage && vm.numberOfPages) {
                 vm.allowPrevious = vm.currentPage !== 1;
-                vm.allowNext = vm.currentPage === vm.numberOfPages && vm.numberOfPages !== 0;
+                vm.allowNext = vm.currentPage !== vm.numberOfPages && vm.numberOfPages !== 0;
             }
         };
 

@@ -71,7 +71,7 @@ describe("jcPaginationController", function () {
             vm.pageSize = 10;
             vm.currentPage = 1;
             $scope.$apply();
-            expect(vm.allowNext).toBe(false);
+            expect(vm.allowNext).toBe(true);
         });
 
         it('should calculate allowNext true correctly.', function () {
@@ -83,7 +83,7 @@ describe("jcPaginationController", function () {
             vm.pageSize = 10;
             vm.currentPage = 6;
             $scope.$apply();
-            expect(vm.allowNext).toBe(true);
+            expect(vm.allowNext).toBe(false);
         });
     });
 
