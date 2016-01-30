@@ -15,9 +15,10 @@
             }
         };
 
-        $scope.$watch('currentPage', function(){
+        vm.onCurrentPageChange = function (eventArgs) {
+            vm.currentPage = eventArgs.currentPage;
             calulateBegin();
-        });
+        };
 
         $scope.$watch('pageSize', function(){
             calulateBegin();

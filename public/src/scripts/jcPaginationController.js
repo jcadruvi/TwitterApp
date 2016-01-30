@@ -6,13 +6,12 @@
         var vm = this; // jshint ignore:line
         vm.allowPrevious = false;
         vm.allowNext = false;
-        if (!vm.currentPage) {
-            vm.currentPage = 1;
-        }
+        vm.currentPage = 1;
         if (!vm.numberOfPages) {
             vm.numberOfPages = 0;
         }
         vm.startPage = 1;
+
         var calculateAllowPreviousAndNext = function () {
             if (vm.currentPage && vm.numberOfPages) {
                 vm.allowPrevious = vm.currentPage !== 1;
@@ -38,6 +37,14 @@
             calculateStartPage();
         };
 
+        var doCurrentPageChange = function() {
+            if (vm.onCurrentPageChange) {
+                vm.onCurrentPageChange({
+                    currentPage: vm.currentPage
+                });
+            }
+        };
+
         $scope.$watch('pageSize', function(){
             calculateNumberOfPages();
         });
@@ -57,6 +64,7 @@
             }
             calculateAllowPreviousAndNext();
             calculateStartPage();
+            doCurrentPageChange();
         };
 
         vm.doPrevious = function () {
@@ -65,12 +73,14 @@
             }
             calculateAllowPreviousAndNext();
             calculateStartPage();
+            doCurrentPageChange();
         };
 
         vm.selectPage = function (pageNum) {
             vm.currentPage = pageNum;
             calculateAllowPreviousAndNext();
             calculateStartPage();
+            doCurrentPageChange();
         };
     }
 })();
