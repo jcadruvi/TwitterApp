@@ -66,5 +66,11 @@
             calculateAllowPreviousAndNext();
             calculateStartPage();
         };
+
+        vm.selectPage = function (pageNum) {
+            vm.currentPage = pageNum;
+            calculateAllowPreviousAndNext();
+            calculateStartPage();
+        };
     }
 })();

@@ -207,4 +207,33 @@ describe("jcPaginationController", function () {
             expect(vm.currentPage).toBe(1);
         });
     });
+
+    describe('selectPage method', function() {
+        it('should select first page and make allowPrevious false.', function() {
+            var vm, $scope = $rootScope.$new();
+            vm = $controller('jcPaginationController', { $scope: $scope});
+            vm.numberOfPages = 20;
+            expect(vm.currentPage).toBe(1);
+            expect(vm.allowPrevious).toBeFalsy();
+            vm.selectPage(3);
+            expect(vm.currentPage).toBe(3);
+            expect(vm.allowPrevious).toBeTruthy();
+            vm.selectPage(1);
+            expect(vm.currentPage).toBe(1);
+            expect(vm.allowPrevious).toBeFalsy();
+        });
+        it('should select last page and make allowNext false.', function(){
+            var vm, $scope = $rootScope.$new();
+            vm = $controller('jcPaginationController', { $scope: $scope});
+            vm.numberOfPages = 5;
+            expect(vm.currentPage).toBe(1);
+            expect(vm.allowNext).toBeFalsy();
+            vm.selectPage(3);
+            expect(vm.currentPage).toBe(3);
+            expect(vm.allowNext).toBeTruthy();
+            vm.selectPage(5);
+            expect(vm.currentPage).toBe(5);
+            expect(vm.allowNext).toBeFalsy();
+        });
+    });
 });

@@ -5,11 +5,16 @@
         <span aria-hidden="true">&laquo;</span>
       </a>
     </li>
-    <li ng-class="{ active: (vm.startPage === vm.currentPage) }"><a href="#" ng-bind="vm.startPage"></a></li>
-    <li ng-class="{ active: ((vm.startPage + 1) === vm.currentPage) }"><a href="#" ng-bind="vm.startPage + 1"></a></li>
-    <li ng-class="{ active: ((vm.startPage + 2) === vm.currentPage) }"><a href="#" ng-bind="vm.startPage + 2"></a></li>
-    <li ng-class="{ active: ((vm.startPage + 3) === vm.currentPage) }"><a href="#" ng-bind="vm.startPage + 3"></a></li>
-    <li ng-class="{ active: ((vm.startPage + 4) === vm.currentPage) }"><a href="#" ng-bind="vm.startPage + 4"></a></li>
+    <li ng-class="{ active: (vm.startPage === vm.currentPage) }"
+        ng-click="vm.selectPage(vm.startPage)"><a href="#" ng-bind="vm.startPage"></a></li>
+    <li ng-class="{ active: ((vm.startPage + 1) === vm.currentPage) }"
+        ng-click="vm.selectPage(vm.startPage + 1)"><a href="#" ng-bind="vm.startPage + 1"></a></li>
+    <li ng-class="{ active: ((vm.startPage + 2) === vm.currentPage) }"
+        ng-click="vm.selectPage(vm.startPage + 2)"><a href="#" ng-bind="vm.startPage + 2"></a></li>
+    <li ng-class="{ active: ((vm.startPage + 3) === vm.currentPage) }"
+        ng-click="vm.selectPage(vm.startPage + 3)"><a href="#" ng-bind="vm.startPage + 3"></a></li>
+    <li ng-class="{ active: ((vm.startPage + 4) === vm.currentPage) }"
+        ng-click="vm.selectPage(vm.startPage + 4)"><a href="#" ng-bind="vm.startPage + 4"></a></li>
     <li ng-class="{ disabled: !vm.allowNext }" ng-click="vm.doNext()">
       <a href="#" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
