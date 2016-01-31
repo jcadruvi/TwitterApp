@@ -8,6 +8,7 @@
         vm.currentPage = 1;
         vm.pageBegin = 0;
         vm.total = 200;
+        vm.displayPages = 9;
 
         var calulateBegin = function() {
             if (vm.currentPage && vm.pageSize) {
