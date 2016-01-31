@@ -12,6 +12,7 @@ describe("jcPaginationController", function () {
     }));
 
     describe('numberOfPages variable', function () {
+
         it('should calculate numberOfPages correctly', function() {
             var vm, $scope = $rootScope.$new();
             vm = $controller('jcPaginationController', { $scope: $scope});
@@ -36,6 +37,7 @@ describe("jcPaginationController", function () {
     });
 
     describe('allowPrevious variable', function() {
+
         it('should calculate allowPrevious false correctly.', function () {
             var vm, $scope = $rootScope.$new();
             vm = $controller('jcPaginationController', { $scope: $scope});
@@ -62,6 +64,7 @@ describe("jcPaginationController", function () {
     });
 
     describe('allowNext variable', function() {
+
         it('should calculate allowNext false correctly.', function () {
             var vm, $scope = $rootScope.$new();
             vm = $controller('jcPaginationController', { $scope: $scope});
@@ -88,6 +91,7 @@ describe("jcPaginationController", function () {
     });
 
     describe('startPage variable', function() {
+
         it('should not increment when currentPages is 2 and numberOfPages is 5.', function() {
            var vm, $scope = $rootScope.$new();
            vm = $controller('jcPaginationController', { $scope: $scope});
@@ -144,10 +148,11 @@ describe("jcPaginationController", function () {
     });
 
     describe('doNext method', function() {
+
         it('should not increment currentPage if numberOfPages has not be set yet if doNext is called', function () {
             var vm, $scope = $rootScope.$new();
             vm = $controller('jcPaginationController', { $scope: $scope});
-
+            vm.displayPages = 5;
             expect(vm.currentPage).toBe(1);
             vm.doNext();
             expect(vm.currentPage).toBe(1);
@@ -156,26 +161,79 @@ describe("jcPaginationController", function () {
         it('should increment currentPage when doNext is called', function () {
             var vm, $scope = $rootScope.$new();
             vm = $controller('jcPaginationController', { $scope: $scope});
-
+            vm.displayPages = 5;
             expect(vm.currentPage).toBe(1);
             vm.numberOfPages = 6;
             vm.doNext();
+            expect(vm.startPage).toBe(1);
             expect(vm.currentPage).toBe(2);
+            expect(vm.pages.length).toBe(5);
+            expect(vm.pages[0]).toBe(1);
+            expect(vm.pages[1]).toBe(2);
+            expect(vm.pages[2]).toBe(3);
+            expect(vm.pages[3]).toBe(4);
+            expect(vm.pages[4]).toBe(5);
         });
 
         it('should not increment currentPage if numberOfPages is equal to currentPage when doNext is called', function () {
             var vm, $scope = $rootScope.$new();
             vm = $controller('jcPaginationController', { $scope: $scope});
-
+            vm.displayPages = 5;
             expect(vm.currentPage).toBe(1);
             vm.numberOfPages = 6;
             vm.currentPage = 6;
             vm.doNext();
             expect(vm.currentPage).toBe(6);
+            expect(vm.startPage).toBe(2);
+            expect(vm.pages.length).toBe(5);
+            expect(vm.pages[0]).toBe(2);
+            expect(vm.pages[1]).toBe(3);
+            expect(vm.pages[2]).toBe(4);
+            expect(vm.pages[3]).toBe(5);
+            expect(vm.pages[4]).toBe(6);
+        });
+
+        it('should make sure pages is not bigger than number of pages.', function () {
+            var vm, $scope = $rootScope.$new();
+            vm = $controller('jcPaginationController', { $scope: $scope});
+            vm.displayPages = 5;
+            expect(vm.currentPage).toBe(1);
+            vm.numberOfPages = 3;
+            vm.currentPage = 1;
+            vm.doNext();
+            expect(vm.currentPage).toBe(2);
+            expect(vm.startPage).toBe(1);
+            expect(vm.pages.length).toBe(3);
+            expect(vm.pages[0]).toBe(1);
+            expect(vm.pages[1]).toBe(2);
+            expect(vm.pages[2]).toBe(3);
+        });
+
+        it('should handle larger displayPages.', function () {
+            var vm, $scope = $rootScope.$new();
+            vm = $controller('jcPaginationController', { $scope: $scope});
+            vm.displayPages = 9;
+            expect(vm.currentPage).toBe(1);
+            vm.numberOfPages = 9;
+            vm.currentPage = 1;
+            vm.doNext();
+            expect(vm.currentPage).toBe(2);
+            expect(vm.startPage).toBe(1);
+            expect(vm.pages.length).toBe(9);
+            expect(vm.pages[0]).toBe(1);
+            expect(vm.pages[1]).toBe(2);
+            expect(vm.pages[2]).toBe(3);
+            expect(vm.pages[3]).toBe(4);
+            expect(vm.pages[4]).toBe(5);
+            expect(vm.pages[5]).toBe(6);
+            expect(vm.pages[6]).toBe(7);
+            expect(vm.pages[7]).toBe(8);
+            expect(vm.pages[8]).toBe(9);
         });
     });
 
     describe('doPrevious method', function() {
+
         it('should not decrement currentPage if numberOfPages has not be set yet.', function () {
             var vm, $scope = $rootScope.$new();
             vm = $controller('jcPaginationController', { $scope: $scope});
@@ -194,6 +252,12 @@ describe("jcPaginationController", function () {
             vm.numberOfPages = 6;
             vm.doPrevious();
             expect(vm.currentPage).toBe(5);
+            expect(vm.pages.length).toBe(5);
+            expect(vm.pages[0]).toBe(2);
+            expect(vm.pages[1]).toBe(3);
+            expect(vm.pages[2]).toBe(4);
+            expect(vm.pages[3]).toBe(5);
+            expect(vm.pages[4]).toBe(6);
         });
 
         it('should not decrement currentPage if it is 1 or less.', function () {
@@ -205,10 +269,55 @@ describe("jcPaginationController", function () {
             vm.currentPage = 1;
             vm.doPrevious();
             expect(vm.currentPage).toBe(1);
+            expect(vm.pages.length).toBe(5);
+            expect(vm.pages[0]).toBe(1);
+            expect(vm.pages[1]).toBe(2);
+            expect(vm.pages[2]).toBe(3);
+            expect(vm.pages[3]).toBe(4);
+            expect(vm.pages[4]).toBe(5);
+        });
+
+        it('should make sure pages is not bigger than number of pages.', function () {
+            var vm, $scope = $rootScope.$new();
+            vm = $controller('jcPaginationController', { $scope: $scope});
+            vm.displayPages = 5;
+            expect(vm.currentPage).toBe(1);
+            vm.numberOfPages = 3;
+            vm.currentPage = 2;
+            vm.doPrevious();
+            expect(vm.currentPage).toBe(1);
+            expect(vm.startPage).toBe(1);
+            expect(vm.pages.length).toBe(3);
+            expect(vm.pages[0]).toBe(1);
+            expect(vm.pages[1]).toBe(2);
+            expect(vm.pages[2]).toBe(3);
+        });
+
+        it('should handle larger displayPages.', function () {
+            var vm, $scope = $rootScope.$new();
+            vm = $controller('jcPaginationController', { $scope: $scope});
+            vm.displayPages = 9;
+            expect(vm.currentPage).toBe(1);
+            vm.numberOfPages = 9;
+            vm.currentPage = 2;
+            vm.doPrevious();
+            expect(vm.currentPage).toBe(1);
+            expect(vm.startPage).toBe(1);
+            expect(vm.pages.length).toBe(9);
+            expect(vm.pages[0]).toBe(1);
+            expect(vm.pages[1]).toBe(2);
+            expect(vm.pages[2]).toBe(3);
+            expect(vm.pages[3]).toBe(4);
+            expect(vm.pages[4]).toBe(5);
+            expect(vm.pages[5]).toBe(6);
+            expect(vm.pages[6]).toBe(7);
+            expect(vm.pages[7]).toBe(8);
+            expect(vm.pages[8]).toBe(9);
         });
     });
 
     describe('selectPage method', function() {
+
         it('should select first page and make allowPrevious false.', function() {
             var vm, $scope = $rootScope.$new();
             vm = $controller('jcPaginationController', { $scope: $scope});
@@ -222,6 +331,7 @@ describe("jcPaginationController", function () {
             expect(vm.currentPage).toBe(1);
             expect(vm.allowPrevious).toBeFalsy();
         });
+
         it('should select last page and make allowNext false.', function(){
             var vm, $scope = $rootScope.$new();
             vm = $controller('jcPaginationController', { $scope: $scope});
@@ -234,6 +344,44 @@ describe("jcPaginationController", function () {
             vm.selectPage(5);
             expect(vm.currentPage).toBe(5);
             expect(vm.allowNext).toBeFalsy();
+        });
+
+        it('should make sure pages is not bigger than number of pages.', function () {
+            var vm, $scope = $rootScope.$new();
+            vm = $controller('jcPaginationController', { $scope: $scope});
+            vm.displayPages = 5;
+            expect(vm.currentPage).toBe(1);
+            vm.numberOfPages = 3;
+            vm.currentPage = 2;
+            vm.selectPage(1);
+            expect(vm.currentPage).toBe(1);
+            expect(vm.startPage).toBe(1);
+            expect(vm.pages.length).toBe(3);
+            expect(vm.pages[0]).toBe(1);
+            expect(vm.pages[1]).toBe(2);
+            expect(vm.pages[2]).toBe(3);
+        });
+
+        it('should handle larger displayPages.', function () {
+            var vm, $scope = $rootScope.$new();
+            vm = $controller('jcPaginationController', { $scope: $scope});
+            vm.displayPages = 9;
+            expect(vm.currentPage).toBe(1);
+            vm.numberOfPages = 9;
+            vm.currentPage = 2;
+            vm.selectPage(1);
+            expect(vm.currentPage).toBe(1);
+            expect(vm.startPage).toBe(1);
+            expect(vm.pages.length).toBe(9);
+            expect(vm.pages[0]).toBe(1);
+            expect(vm.pages[1]).toBe(2);
+            expect(vm.pages[2]).toBe(3);
+            expect(vm.pages[3]).toBe(4);
+            expect(vm.pages[4]).toBe(5);
+            expect(vm.pages[5]).toBe(6);
+            expect(vm.pages[6]).toBe(7);
+            expect(vm.pages[7]).toBe(8);
+            expect(vm.pages[8]).toBe(9);
         });
     });
 });

@@ -8,6 +8,7 @@
             controller: 'jcPaginationController',
             controllerAs: 'vm',
             bindToController: {
+                displayPages: '=?',
                 onCurrentPageChange: '=',
                 pageSize: '=',
                 total: '='

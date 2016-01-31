@@ -10,7 +10,11 @@
         if (!vm.numberOfPages) {
             vm.numberOfPages = 0;
         }
+        if (!vm.displayPages) {
+            vm.displayPages = 5;
+        }
         vm.startPage = 1;
+        vm.pages = [];
 
         var calculateAllowPreviousAndNext = function () {
             if (vm.currentPage && vm.numberOfPages) {
@@ -20,12 +24,16 @@
         };
 
         var calculateStartPage = function () {
-            vm.startPage = vm.currentPage - 2;
+            vm.startPage = vm.currentPage - ((vm.displayPages - 1) / 2);
             if(vm.startPage < 1) {
                 vm.startPage = 1;
             }
-            if (vm.startPage + 4 > vm.numberOfPages) {
-                vm.startPage = vm.numberOfPages - 4;
+            else if (vm.startPage + (vm.displayPages - 1) > vm.numberOfPages) {
+                vm.startPage = vm.numberOfPages - (vm.displayPages - 1);
+            }
+            vm.pages = [];
+            for (var i = 0; i < vm.displayPages && i < vm.numberOfPages; i++) {
+                vm.pages.push(vm.startPage + i);
             }
         };
 
